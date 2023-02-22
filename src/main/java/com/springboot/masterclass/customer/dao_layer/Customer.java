@@ -1,4 +1,4 @@
-package com.springboot.masterclass.customer;
+package com.springboot.masterclass.customer.dao_layer;
 
 import java.util.Objects;
 
