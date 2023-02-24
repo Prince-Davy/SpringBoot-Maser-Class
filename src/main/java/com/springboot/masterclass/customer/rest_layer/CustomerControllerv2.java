@@ -2,7 +2,9 @@ package com.springboot.masterclass.customer.rest_layer;
 
 
 import com.springboot.masterclass.customer.dao_layer.Customer;
+import com.springboot.masterclass.customer.exception.ApiRequestException;
 import com.springboot.masterclass.customer.service_layer.CustomerService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,12 +25,12 @@ public class CustomerControllerv2 {
     @GetMapping(value = "all")
     List<Customer> getCustomers() {
         return Arrays.asList(
-                new Customer(0L, "John", "password127896"),
-                new Customer(1L, "Sophie", "password1973"),
-                new Customer(2L, "Matty", "password82465"),
-                new Customer(3L, "Roro", "password127896"),
-                new Customer(4L, "Bella", "password1973"),
-                new Customer(5L, "Louve", "password82465"));
+                new Customer(0L, "John", "password127896", "email@gmail.com"),
+                new Customer(1L, "Sophie", "password1973", "email@gmail.com"),
+                new Customer(2L, "Matty", "password82465", "email@gmail.com"),
+                new Customer(3L, "Roro", "password127896", "email@gmail.com"),
+                new Customer(4L, "Bella", "password1973", "email@gmail.com"),
+                new Customer(5L, "Louve", "password82465", "email@gmail.com"));
     }
 
     @GetMapping("{customerId}")
@@ -36,9 +38,13 @@ public class CustomerControllerv2 {
         return customerService.getCustomer(id);
     }
 
+    @GetMapping("{customerId}/exception")
+    public Customer getCustomerException(@PathVariable("customerId") Long id) {
+        throw new ApiRequestException("ApiRequestException for customer " + id);
+    }
 
     @PostMapping
-    public void createCustomer(@RequestBody Customer customer) {
+    public void createCustomer(@Valid @RequestBody Customer customer) {
         System.out.println("POST request");
         System.out.println("Customer created : " + customer);
     }
@@ -54,5 +60,4 @@ public class CustomerControllerv2 {
         System.out.println("DELETE request");
         System.out.println("Customer with id : " + customerId + " is deleted ");
     }
-
 }

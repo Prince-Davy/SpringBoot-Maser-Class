@@ -2,27 +2,27 @@ package com.springboot.masterclass.customer.dao_layer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Objects;
 
 public class Customer {
-    private Long id;
-    private String name;
+    private final Long id;
+    @NotBlank(message = "name must be not empty")
+    private final String name;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String password;
+    @NotBlank(message = "password must be not empty")
+    private final String password;
+    @NotBlank(message = "email must be not empty")
+    @Email
+    private final String email;
 
-    public Customer() {
-    }
-
-    public Customer(Long id, String name, String password) {
+    public Customer(Long id, String name, String password, String email) {
         this.id = id;
         this.name = name;
         this.password = password;
-    }
-
-    public Customer(Long id, String name) {
-        this.id = id;
-        this.name = name;
+        this.email = email;
     }
 
     public Long getId() {
@@ -32,9 +32,14 @@ public class Customer {
     public String getName() {
         return name;
     }
+
     @JsonIgnore
     public String getPassword() {
         return password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     @Override
@@ -55,6 +60,7 @@ public class Customer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
