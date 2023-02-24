@@ -38,10 +38,6 @@ public class Customer {
         return password;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

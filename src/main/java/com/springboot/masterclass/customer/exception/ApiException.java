@@ -17,22 +17,6 @@ public class ApiException {
         this.zonedDateTime = zonedDateTime;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public Throwable getThrowable() {
-        return throwable;
-    }
-
-    public HttpStatus getHttpStatus() {
-        return httpStatus;
-    }
-
-    public ZonedDateTime getZonedDateTime() {
-        return zonedDateTime;
-    }
-
     @Override
     public String toString() {
         return "ApiException{" +
