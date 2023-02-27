@@ -1,4 +1,4 @@
-package com.springboot.masterclass.customer.jasonplaceholder;
+package com.springboot.masterclass.customer.jsonplaceholder;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

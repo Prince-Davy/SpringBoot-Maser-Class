@@ -1,4 +1,4 @@
-package com.springboot.masterclass.customer.jasonplaceholder;
+package com.springboot.masterclass.customer.jsonplaceholder;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
