@@ -22,8 +22,8 @@ public class CustomerControllerv2 {
         this.customerService = customerService;
     }
 
-    @GetMapping(value = "all")
-    List<Customer> getCustomers() {
+    @GetMapping(value = "list")
+    List<Customer> getListCustomers() {
         return Arrays.asList(
                 new Customer(0L, "John", "password127896", EMAIL),
                 new Customer(1L, "Sophie", "password1973", EMAIL),
@@ -31,6 +31,11 @@ public class CustomerControllerv2 {
                 new Customer(3L, "Roro", "password127896", EMAIL),
                 new Customer(4L, "Bella", "password1973", EMAIL),
                 new Customer(5L, "Louve", "password82465", EMAIL));
+    }
+
+    @GetMapping(value = "all")
+    List<Customer> getCustomers() {
+        return customerService.getCustomers();
     }
 
     @GetMapping("{customerId}")
