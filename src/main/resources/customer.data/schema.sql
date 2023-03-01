@@ -5,3 +5,4 @@ create table customer
     password VARCHAR(50),
     email    VARCHAR(50)
 );
+

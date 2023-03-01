@@ -1,4 +1,4 @@
-package com.springboot.masterclass.customer.exception;
+package com.springboot.masterclass.exception;
 
 public class ApiRequestException extends RuntimeException{
     public ApiRequestException(String message) {

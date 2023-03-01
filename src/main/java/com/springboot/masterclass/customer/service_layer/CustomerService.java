@@ -2,15 +2,17 @@ package com.springboot.masterclass.customer.service_layer;
 
 import com.springboot.masterclass.customer.dao_layer.Customer;
 import com.springboot.masterclass.customer.dao_layer.CustomerRepository;
-import com.springboot.masterclass.customer.exception.ApiNotFoundException;
+import com.springboot.masterclass.exception.ApiNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.actuate.info.Info;
+import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CustomerService {
+public class CustomerService implements InfoContributor {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
 
@@ -34,5 +36,10 @@ public class CustomerService {
                             LOGGER.error("Error getting customer {}", customerId, apiNotFoundException);
                             return apiNotFoundException;
                         });
+    }
+
+    @Override
+    public void contribute(Info.Builder builder) {
+        builder.withDetail("custom-info", "Customer info message");
     }
 }

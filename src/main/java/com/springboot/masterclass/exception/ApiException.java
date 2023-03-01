@@ -1,4 +1,4 @@
-package com.springboot.masterclass.customer.exception;
+package com.springboot.masterclass.exception;
 
 import org.springframework.http.HttpStatus;
 

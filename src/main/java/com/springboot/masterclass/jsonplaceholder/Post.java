@@ -1,4 +1,4 @@
-package com.springboot.masterclass.customer.jsonplaceholder;
+package com.springboot.masterclass.jsonplaceholder;
 
 import java.util.Objects;
 

@@ -1,19 +1,23 @@
 package com.springboot.masterclass.customer.rest_layer;
 
 import com.springboot.masterclass.customer.dao_layer.Customer;
-import com.springboot.masterclass.customer.exception.ApiRequestException;
 import com.springboot.masterclass.customer.service_layer.CustomerService;
+import com.springboot.masterclass.exception.ApiRequestException;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v2/customer")
+@RequestMapping(path = "api/v2/customers")
 public class CustomerControllerv2 {
 
+    final static Logger logger = LoggerFactory.getLogger(CustomerControllerv2.class);
     private static final String EMAIL = "email@gmail.com";
     private final CustomerService customerService;
 
@@ -61,5 +65,11 @@ public class CustomerControllerv2 {
     @DeleteMapping("{customerId}")
     public void deleteCustomer(@PathVariable("customerId") Long customerId) {
         System.out.println("DELETE request \nCustomer with id : " + customerId + " is deleted ");
+    }
+
+    @GetMapping("/something")
+    public ResponseEntity<String> createLogs() {
+        logger.warn("Just checking");
+        return ResponseEntity.ok().body("All Ok");
     }
 }
