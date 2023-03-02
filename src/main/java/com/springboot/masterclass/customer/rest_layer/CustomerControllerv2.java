@@ -4,6 +4,8 @@ import com.springboot.masterclass.customer.dao_layer.Customer;
 import com.springboot.masterclass.customer.service_layer.CustomerService;
 import com.springboot.masterclass.exception.ApiRequestException;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +16,13 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
+@Slf4j
+@AllArgsConstructor
 @RequestMapping(path = "api/v2/customers")
 public class CustomerControllerv2 {
 
-    final static Logger logger = LoggerFactory.getLogger(CustomerControllerv2.class);
     private static final String EMAIL = "email@gmail.com";
     private final CustomerService customerService;
-
-    @Autowired
-    public CustomerControllerv2(CustomerService customerService) {
-        this.customerService = customerService;
-    }
 
     @GetMapping(value = "list")
     List<Customer> getListCustomers() {
@@ -69,7 +67,7 @@ public class CustomerControllerv2 {
 
     @GetMapping("/something")
     public ResponseEntity<String> createLogs() {
-        logger.warn("Just checking");
+        log.warn("Just checking");
         return ResponseEntity.ok().body("All Ok");
     }
 }
