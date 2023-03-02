@@ -9,13 +9,15 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.springboot</groupId>
-    <artifactId>SpringBoot-Maser-Class</artifactId>
+    <artifactId>SpringBoot_Maser_Class</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SpringBoot</name>
     <description>SpringBoot Master Class For Java Developper</description>
     <properties>
         <java.version>17</java.version>
         <spring.cloud-version>2022.0.1</spring.cloud-version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -99,9 +101,18 @@
                     <execution>
                         <goals>
                             <goal>build-info</goal>
+                            <goal>build-image</goal>
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
